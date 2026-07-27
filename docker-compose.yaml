@@ -8,5 +8,12 @@ services:
       - POSTGRES_PASSWORD=1p@ssw0rd
       - POSTGRES_USER=prawee
       - POSTGRES_DB=prawee
-    
-    
+
+  admin:
+    image: dpage/pgadmin4
+    container_name: 69-s2-admin
+    ports:
+      - 8082:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=prawee.w@fte.kmutnb.ac.th
+      - PGADMIN_DEFAULT_PASSWORD=1p@ssw0rd
