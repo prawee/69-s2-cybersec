@@ -15,5 +15,5 @@ services:
     ports:
       - 8082:80
     environment:
-      - PGADMIN_DEFAULT_EMAIL=prawee.w@fte.kmutnb.ac.th
-      - PGADMIN_DEFAULT_PASSWORD=1p@ssw0rd
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
