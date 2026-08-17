@@ -1,0 +1,11 @@
+# REST
+
+## Login
+POST http://localhost:9192/admin/login
+Content-Type: application/json
+
+{
+    "email": "",
+    "password": "",
+    "rememberMe": false
+}
