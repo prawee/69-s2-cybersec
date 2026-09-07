@@ -1,13 +1,17 @@
 # REST
 
+## Variables
+@admin_email = {{$dotenv ADMIN_EMAIL}}
+@admin_password = {{$dotenv ADMIN_PASSWORD}}
+
 ## 1.Admin
 ### 1.1 Login
 POST http://localhost:9192/admin/login
 Content-Type: application/json
 
 {
-    "email": "",
-    "password": "",
+    "email": "{{admin_email}}",
+    "password": "{{admin_password}}",
     "rememberMe": false
 }
 
@@ -29,6 +33,8 @@ Content-Type: application/json
 {
     "email": ""
 }
+
+### 1.3.1 ??????
 
 ### 1.4 Profile
 GET http://localhost:9192/admin/users/me
