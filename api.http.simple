@@ -1,12 +1,21 @@
 # REST
 
 ## Variables
+@base_url = http://localhost:{{$dotenv APP_PORT}}
 @admin_email = {{$dotenv ADMIN_EMAIL}}
 @admin_password = {{$dotenv ADMIN_PASSWORD}}
+@admin_firstname = {{$dotenv ADMIN_FIRSTNAME}}
+@admin_lastname = {{$dotenv ADMIN_LASTNAME}}
+@admin_jwt_token = {{$dotenv ADMIN_JWT_TOKEN}}
+@user_identifier = {{$dotenv USER_IDENTIFIER}}
+@user_username = {{$dotenv USER_USERNAME}}
+@user_email = {{$dotenv USER_EMAIL}}
+@user_password = {{$dotenv USER_PASSWORD}}
+@user_jwt_token = {{$dotenv USER_JWT_TOKEN}}
 
 ## 1.Admin
 ### 1.1 Login
-POST http://localhost:9192/admin/login
+POST {{base_url}}/admin/login
 Content-Type: application/json
 
 {
@@ -16,58 +25,58 @@ Content-Type: application/json
 }
 
 ### 1.2 Register (admin) one time for first time to create admin account
-POST http://localhost:9192/admin/register-admin
+POST {{base_url}}/admin/register-admin
 Content-Type: application/json
 
 {
-    "firstname": "",
-    "lastname": "",
-    "email": "",
-    "password": ""
+    "firstname": "{{admin_firstname}}",
+    "lastname": "{{admin_lastname}}",
+    "email": "{{admin_email}}",
+    "password": "{{admin_password}}"
 }
 
 ### 1.3 Forgot Password
-POST http://localhost:9192/admin/forgot-password
+POST {{base_url}}/admin/forgot-password
 Content-Type: application/json
 
 {
-    "email": ""
+    "email": "{{admin_email}}"
 }
 
 ### 1.3.1 ??????
 
 ### 1.4 Profile
-GET http://localhost:9192/admin/users/me
-Authorization: Bearer <admin-jwt-token>
+GET {{base_url}}/admin/users/me
+Authorization: Bearer {{admin_jwt_token}}
 
 ## 2.User
 ### 2.1 Login
-POST http://localhost:9192/api/auth/local
+POST {{base_url}}/api/auth/local
 Content-Type: application/json
 
 {
-    "identifier": "",
-    "password": ""
+    "identifier": "{{user_identifier}}",
+    "password": "{{user_password}}"
 }
 
 ### 2.2 Register
-POST http://localhost:9192/api/auth/local/register
+POST {{base_url}}/api/auth/local/register
 Content-Type: application/json
 
 {
-    "username": "",
-    "email": "",
-    "password": ""
+    "username": "{{user_username}}",
+    "email": "{{user_email}}",
+    "password": "{{user_password}}"
 }
 
 ### 2.3 Forgot Password
-POST http://localhost:9192/api/auth/forgot-password
+POST {{base_url}}/api/auth/forgot-password
 Content-Type: application/json
 
 {
-    "email": ""
+    "email": "{{user_email}}"
 }
 
 ### 2.4 Profile
-GET http://localhost:9192/api/users/me
-Authorization: Bearer <user-jwt-token>
+GET {{base_url}}/api/users/me
+Authorization: Bearer {{user_jwt_token}}
